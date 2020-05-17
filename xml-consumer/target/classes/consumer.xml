@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+         http://dubbo.apache.org/schema/dubbo
+          http://dubbo.apache.org/schema/dubbo/dubbo.xsd
+          http://www.springframework.org/schema/context
+          http://www.springframework.org/schema/context/spring-context.xsd"
+>
+
+<context:component-scan base-package="com.blueSky.dubbo.service.impl" />
+
+    <dubbo:application name="student-consumer"/>
+
+    <!--<dubbo:registry group="student" address="zookeeper://127.0.0.1:2181"/>
+    group="student" 官网这个存在巨坑
+    -->
+    <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
+    <!-- 超时  -->
+    <!-- 重试  -->
+    <!-- 多版本  -->
+    <!-- 本地存根 stub="consumer.com.blueSky.service.impl.ClassServiceStub"  -->
+    <dubbo:reference id="studentClassService" check="false" version="0.1.0" retries="0" timeout="3000" interface="api.service.StudentClassService">
+        <dubbo:method name="listStudentClass" />
+    </dubbo:reference>
+
+
+
+</beans>

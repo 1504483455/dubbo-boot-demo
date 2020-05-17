@@ -1,0 +1,14 @@
+server:
+  port: 9101
+
+dubbo:
+  application:
+    name: boot-studentClass-consumer
+  registry:
+      address: zookeeper://127.0.0.1:2181
+  consumer:
+    timeout: 3000
+  provider:
+    loadbalance: myLoadBalance
+testApp: true
+version: v1.0

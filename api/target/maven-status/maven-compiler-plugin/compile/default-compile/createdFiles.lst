@@ -1,0 +1,4 @@
+api\domain\Student.class
+api\domain\StudentClass.class
+api\service\StudentClassService.class
+api\service\StudentService.class
